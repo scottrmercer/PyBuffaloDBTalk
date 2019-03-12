@@ -1,0 +1,26 @@
+version: "3"
+
+services: 
+  postgres:
+    restart: "always"
+    container_name: "postgres"
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pg_volume:/app/
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+
+  python:
+    container_name: "python3.6"
+    build: services/py
+    volumes:
+      - ./:/app/
+
+volumes:
+  pg_volume:
+  py_volume:
