@@ -1,3 +1,4 @@
-ipython
 psycopg2-binary
-sqlalchemy
+sqlalchemy==1.2.17
+alembic
+sqlalchemy-continuum
