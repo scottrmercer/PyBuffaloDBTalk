@@ -9,3 +9,19 @@ if __name__ == '__main__':
     # write the objects to the DB
     session.add(customer)
     session.commit()
+
+    # modify our customer record
+    customer.last_name = 'Doe-Simpson'
+
+    # delete old address
+    session.query(Address).filter_by(customer=customer, type="home").delete()
+
+    # add new address
+    customer.addresses.append(Address(type='home', street='145 Delaware Ave', city='B-Lo', postal_code='14202'))
+
+    session.add(customer)
+    session.commit()
+
+    for version in customer.versions:
+        print(version.last_name)
+
