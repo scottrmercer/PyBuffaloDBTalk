@@ -15,12 +15,20 @@ session = sessionmaker(bind=engine)()
 Base = declarative_base()
 
 
-class Customer(Base):
-    __tablename__ = 'customer'
-
+class BaseModelMixin(object):
+    '''
+    This class is used to extend the SQLAlchemy declarative_base, allowing us to add standard
+    boilerplate fields to all models using it as a mixin.
+    '''
+    # this tells continuum to version this model's records
+    __versioned__ = {}
+    # these are fields that we want to be common to every model, as not to be repetitive
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     created_date = sa.Column(sa.TIMESTAMP(timezone=True), server_default=func.now())
     updated_date = sa.Column(sa.TIMESTAMP(timezone=True), onupdate=func.now())
+
+class Customer(BaseModelMixin, Base):
+    __tablename__ = 'customer'
 
     first_name = sa.Column(sa.Unicode(255))
     last_name = sa.Column(sa.Unicode(255))
@@ -31,12 +39,8 @@ class Customer(Base):
     updated_date = sa.Column(sa.TIMESTAMP(timezone=True), onupdate=func.now())
 
 
-class Address(Base):
+class Address(BaseModelMixin, Base):
     __tablename__ = 'address'
-
-    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
-    created_date = sa.Column(sa.TIMESTAMP(timezone=True), server_default=func.now())
-    updated_date = sa.Column(sa.TIMESTAMP(timezone=True), onupdate=func.now())
 
     customer_id = sa.Column(sa.Integer, sa.ForeignKey('customer.id'), nullable=False)
 
