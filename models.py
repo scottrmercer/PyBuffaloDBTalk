@@ -49,9 +49,6 @@ class Address(BaseModelMixin, Base):
     city = sa.Column(sa.Unicode(255))
     postal_code = sa.Column(sa.Unicode(8))
 
-    created_date = sa.Column(sa.TIMESTAMP(timezone=True), server_default=func.now())
-    updated_date = sa.Column(sa.TIMESTAMP(timezone=True), onupdate=func.now())
-
 
 # Generates a fresh schema from the models (only runs once)
 Base.metadata.create_all(engine)

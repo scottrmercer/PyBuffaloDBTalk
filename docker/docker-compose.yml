@@ -16,7 +16,7 @@ services:
       - 5432:5432
 
   python:
-    container_name: "python3.6"
+    container_name: "python3.6-alpine"
     build: services/py
     volumes:
       - ./:/app/
