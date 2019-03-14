@@ -56,8 +56,6 @@ class Address(BaseModelMixin, Base):
 
 # triggers continuum to create it's schema
 sa.orm.configure_mappers()
-# Generates a fresh schema from the models (only runs once)
-Base.metadata.create_all(engine)
 
 print('Current Tables:')
 for table in engine.table_names():

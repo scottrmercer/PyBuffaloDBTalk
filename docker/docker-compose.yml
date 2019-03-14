@@ -19,7 +19,7 @@ services:
     container_name: "python3.6-alpine"
     build: services/py
     volumes:
-      - ./:/app/
+      - ../:/app/
 
 volumes:
   pg_volume:
