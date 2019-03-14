@@ -52,3 +52,6 @@ class Address(Base):
 # Generates a fresh schema from the models (only runs once)
 Base.metadata.create_all(engine)
 
+print ('Current Tables:')
+for table in engine.table_names():
+    print(f'{table}')
