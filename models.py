@@ -40,6 +40,7 @@ class Customer(BaseModelMixin, Base):
 
     first_name = sa.Column(sa.Unicode(255))
     last_name = sa.Column(sa.Unicode(255))
+    nick_name = sa.Column(sa.Unicode(255))
 
     addresses = relationship("Address", backref="customer")
 
