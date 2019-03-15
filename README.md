@@ -1,3 +1,5 @@
+This project was created to accompany a talk I gave to the Python Buffalo meetup on 2019-03-14. The slides are included in HTML and PDF format in the master branch. The subject of the talk is "how to manage your RDBMS schema using python", and it covers SQLAlchemy, SQLAlchemy-continuum, and Alembic. 
+
 # Running this project
 
 This talk (see index.html for slides) contains 3 exercises. 
